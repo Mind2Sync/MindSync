@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:background="#E6E6E6"
+    tools:context="com.devdreamerx.mind_sync.ui.dashboard.DashboardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="ScrollViewSize">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi👋"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textColor="#FF051B0E"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/nameResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Arun"
+                android:layout_marginStart="5dp"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textColor="#FF051B0E"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Here are your results"
+            android:textSize="@dimen/_18sdp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#FF051B0E"/>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:padding="5dp">-->
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Submitted Retinal Scan:"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:fontFamily="sans-serif-condensed-medium"-->
+        <!--                android:textColor="#FF051B0E"/>-->
+
+        <!--            <com.google.android.material.imageview.ShapeableImageView-->
+        <!--                android:id="@+id/dashboardOCTimg"-->
+        <!--                android:layout_width="250dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:maxHeight="250dp"-->
+        <!--                android:layout_gravity="center_horizontal"-->
+        <!--                android:layout_marginTop="15dp"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:shapeAppearanceOverlay="@style/RoundedCorner"-->
+        <!--                tools:ignore="ImageContrastCheck" />-->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:padding="5dp">-->
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Segmented Retinal Image:"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:fontFamily="sans-serif-condensed-medium"-->
+        <!--                android:textColor="#FF051B0E"/>-->
+
+        <!--            <com.google.android.material.imageview.ShapeableImageView-->
+        <!--                android:id="@+id/dashboardSegmentedImg"-->
+        <!--                android:layout_width="250dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:maxHeight="250dp"-->
+        <!--                android:layout_gravity="center_horizontal"-->
+        <!--                android:layout_marginTop="15dp"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:shapeAppearanceOverlay="@style/RoundedCorner"-->
+        <!--                tools:ignore="ImageContrastCheck" />-->
+
+        <!--        </LinearLayout>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Prediction Result:"
+            android:textColor="#FF051B0E" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:layout_marginTop="20dp">
+
+            <!--Card View 1-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="40dp"
+                app:cardBackgroundColor="#C9CAC9"
+                android:layout_marginEnd="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/imgPrediction"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/prediction"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/predictionYN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/amaranth"
+                        android:text="-------"
+                        android:textColor="@color/customPredictionGreen"
+                        android:textSize="30sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPrediction"
+                        tools:text="Yes"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/txtPrediction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="Prediction"
+                        android:textColor="#3E3E3E"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/predictionYN"
+                        tools:ignore="HardcodedText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <!--            &lt;!&ndash; CardView 2 &ndash;&gt;-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card2"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="130dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                app:cardCornerRadius="40dp"-->
+            <!--                android:layout_marginStart="10dp"-->
+            <!--                app:cardBackgroundColor="#C9CAC9">-->
+
+            <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:padding="8dp">-->
+
+            <!--                    <ImageView-->
+            <!--                        android:id="@+id/imgPercentage"-->
+            <!--                        android:layout_width="30dp"-->
+            <!--                        android:layout_height="30dp"-->
+            <!--                        android:layout_marginStart="8dp"-->
+            <!--                        android:layout_marginTop="8dp"-->
+            <!--                        android:src="@drawable/percent"-->
+            <!--                        app:layout_constraintStart_toStartOf="parent"-->
+            <!--                        app:layout_constraintTop_toTopOf="parent"-->
+            <!--                        tools:ignore="ContentDescription" />-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:id="@+id/txtPercentageLLM"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        app:layout_constraintHorizontal_bias="0.5"-->
+            <!--                        android:orientation="horizontal"-->
+            <!--                        app:layout_constraintStart_toStartOf="parent"-->
+            <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                        app:layout_constraintTop_toBottomOf="@id/imgPercentage">-->
+
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/percentage"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:fontFamily="@font/amaranth"-->
+            <!--                            android:text=""-->
+            <!--                            tools:text="68%"-->
+            <!--                            android:textColor="@color/black"-->
+            <!--                            android:textSize="30sp"-->
+            <!--                            tools:ignore="HardcodedText" />-->
+
+
+            <!--                    </LinearLayout>-->
+
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/txtPercentage"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginStart="8dp"-->
+            <!--                        android:layout_marginBottom="10dp"-->
+            <!--                        android:layout_marginTop="10dp"-->
+            <!--                        android:fontFamily="sans-serif-condensed-medium"-->
+            <!--                        android:text="Percentage"-->
+            <!--                        android:textColor="#3E3E3E"-->
+            <!--                        android:textSize="15sp"-->
+            <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                        app:layout_constraintStart_toStartOf="parent"-->
+            <!--                        app:layout_constraintTop_toBottomOf="@+id/txtPercentageLLM"-->
+            <!--                        tools:ignore="HardcodedText" />-->
+
+            <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            <!--            </androidx.cardview.widget.CardView>-->
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardBackgroundColor="#C9CAC9"
+            app:cardCornerRadius="30dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="40dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtTips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Recommendations and Tips"
+                    android:textColor="#016833"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/txtRecommendations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTips"
+                    tools:ignore="TextSizeCheck"
+                    tools:text="Test" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</ScrollView>
