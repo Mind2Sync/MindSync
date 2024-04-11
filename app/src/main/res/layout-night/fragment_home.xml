@@ -53,17 +53,29 @@
 
         </LinearLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
-            android:layout_width="250dp"
+<!--        <com.google.android.material.imageview.ShapeableImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:maxHeight="250dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:shapeAppearanceOverlay="@style/RoundedCorner"-->
+<!--            tools:ignore="ImageContrastCheck" />-->
+
+        <TextView
+            android:id="@+id/selectedFileNameTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxHeight="250dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/RoundedCorner"
-            tools:ignore="ImageContrastCheck" />
+            tools:text="fmri1.nii"
+            android:layout_marginStart="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="serif"
+            android:textSize="15sp"
+            android:textStyle="bold|normal"/>
 
 
         <TextView

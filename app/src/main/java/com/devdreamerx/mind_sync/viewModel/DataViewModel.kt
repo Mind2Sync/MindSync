@@ -1,5 +1,6 @@
 package com.devdreamerx.mind_sync.viewModel
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +9,11 @@ class DataViewModel : ViewModel() {
     private val _name = MutableLiveData<String>()
     val name: LiveData<String> get() = _name
 
-    private val _imageBase64 = MutableLiveData<String>()
-    val imageBase64: LiveData<String> get() = _imageBase64
+    private val _file = MutableLiveData<String>()
+    val fileType: LiveData<String> get() = _file
 
-    fun setNameAndImage(name: String, imageBase64: String) {
+    fun setNameAndFileName(name: String, fileType: Uri?) {
         _name.value = name
-        _imageBase64.value = imageBase64
+        _file.value = fileType.toString()
     }
 }

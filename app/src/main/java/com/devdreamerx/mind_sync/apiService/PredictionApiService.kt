@@ -17,7 +17,7 @@ interface PredictionApiService {
         @Part("age") age: Int,
         @Part("sex") sex: String,
         @Part("country") country: String,
-        @Part image: MultipartBody.Part
+        @Part image: MultipartBody.Part?
     ): Call<PredictionResponse>
 }
 
