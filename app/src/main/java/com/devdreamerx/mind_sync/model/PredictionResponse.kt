@@ -1,8 +1,7 @@
 package com.devdreamerx.mind_sync.model
 
 data class PredictionResponse(
-    val adhdPrediction: String?,
-    val recommendations: String?,
+    val prediction: Float
 )
 
 
@@ -11,3 +10,4 @@ data class PredictionResponse(
 //    val chances: Float,
 //    val segmentedImage: String?,
 //    val recommendation: String
+//    val recommendations: String?,

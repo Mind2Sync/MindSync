@@ -3,6 +3,7 @@ package com.devdreamerx.mind_sync.ui.home
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -19,23 +20,26 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.devdreamerx.mind_sync.R
 import com.devdreamerx.mind_sync.databinding.FragmentHomeBinding
-import com.devdreamerx.mind_sync.netwokService.RetrofitInstance
 import com.devdreamerx.mind_sync.model.PredictionResponse
+import com.devdreamerx.mind_sync.netwokService.RetrofitInstance
 import com.devdreamerx.mind_sync.util.PredictionResponseEvent
 import com.devdreamerx.mind_sync.viewModel.DataViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import org.greenrobot.eventbus.EventBus
 import retrofit2.await
 import java.io.File
 import java.io.InputStream
+import java.util.UUID
 
-@Suppress("DEPRECATION")
+@Suppress("DEPRECATION", "UNREACHABLE_CODE")
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -58,7 +62,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        selectedFileNameTextView = binding.selectedFileNameTextView!!
+        selectedFileNameTextView = binding.selectedFileNameTextView
 
         binding.addMriScanBtn.setOnClickListener {
             openFilePicker()
@@ -87,8 +91,7 @@ class HomeFragment : Fragment() {
                             Log.d("APIResponse", "Response received: $response")
 
                             val predictionResponse = PredictionResponse(
-                                adhdPrediction = response.adhdPrediction,
-                                recommendations = response.recommendations
+                                prediction = response.prediction
                             )
 
                             EventBus.getDefault().postSticky(PredictionResponseEvent(predictionResponse))
@@ -115,14 +118,6 @@ class HomeFragment : Fragment() {
         return root
     }
 
-
-//    private fun openGallery() {
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = "image/*"
-//        startActivityForResult(intent, IMAGE_PICK_CODE)
-//    }
-
-
     private fun openFilePicker() {
 
         if (!isButtonRotated) {
@@ -139,6 +134,21 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE && grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            openFilePicker() // Open file picker after permission granted
+        } else {
+            // Handle permission denied case (optional)
+        }
+    }
+
     private fun rotateButton(degrees: Float, action: () -> Unit) {
         binding.addMriScanBtn.animate().apply {
             duration = 200 // Animation duration in milliseconds
@@ -149,60 +159,15 @@ class HomeFragment : Fragment() {
         isButtonRotated = !isButtonRotated // Toggle the rotation state
     }
 
-
-
-//    private fun getImageBase64(): String {
-//        val uri = selectedImageUri
-//
-//        if(uri != null){
-//            try {
-//                val inputStream = activity?.contentResolver?.openInputStream(uri)
-//                val bitmap = BitmapFactory.decodeStream(inputStream)
-//
-//                // Convert the selected image to base64
-//                val outputStream = ByteArrayOutputStream()
-//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-//                val imageByteArray = outputStream.toByteArray()
-//
-//                return Base64.getEncoder().encodeToString(imageByteArray)
-//            } catch (e: FileNotFoundException) {
-//                Log.e("ImageError", "Error converting image to Base64: ${e.message}", e)
-//            }
-//        }else{
-//            Log.e("ImageError", "Selected image URI is null")
-//        }
-//        return ""
-//    }
-
-
-//    private fun getImageFile(): MultipartBody.Part? {
-//        val uri = selectedImageUri ?: return null
-//        val contentResolver = requireContext().contentResolver
-//        val inputStream = contentResolver.openInputStream(uri) ?: return null
-//        val file = File(requireContext().cacheDir, "temp_image.jpg")
-//        file.copyInputStreamToFile(inputStream)
-//        val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
-//        return MultipartBody.Part.createFormData("mriScan", file.name, requestBody)
-//    }
-
     private fun File.copyInputStreamToFile(inputStream: InputStream) {
         this.outputStream().use { fileOut ->
             inputStream.copyTo(fileOut)
         }
     }
 
-
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
-//    private fun showLoadingDialog() {
-//        val builder = AlertDialog.Builder(requireContext())
-//        builder.setView(R.layout.dialog_loading)
-//        builder.setCancelable(false)
-//        loadingDialog = builder.create()
-//        loadingDialog?.show()
-//    }
 
     private fun showLoadingDialog() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
@@ -239,26 +204,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-//    @Deprecated("Deprecated in Java")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK && data != null) {
-////            selectedImageUri = data.data
-//
-//            try {
-//                val inputStream = activity?.contentResolver?.openInputStream(selectedImageUri!!)
-//                val bitmap = BitmapFactory.decodeStream(inputStream)
-//                binding.imageView.setImageBitmap(bitmap)
-//            } catch (e: FileNotFoundException) {
-//                Log.e("ImageError", "Error loading selected image: ${e.message}", e)
-//                showToast("No image selected")
-//            }
-//        } else {
-//            showToast("No image selected")
-//        }
-//    }
-
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == FILE_PICK_CODE && resultCode == Activity.RESULT_OK && data != null) {
@@ -272,22 +218,35 @@ class HomeFragment : Fragment() {
         }
     }
 
+//    private fun getFilePart(): MultipartBody.Part? {
+//        val uri = selectedFileUri ?: return null
+//        val contentResolver = requireContext().contentResolver
+//        val inputStream = contentResolver.openInputStream(uri) ?: return null
+//        val file = getFileName(uri).let { File(it) } // Creating a File object using the file name
+//        file.copyInputStreamToFile(inputStream)
+//        val requestBody = file.asRequestBody(contentResolver.getType(uri)?.toMediaTypeOrNull())
+//        return requestBody.let { MultipartBody.Part.createFormData("file", file.name, it) }
+//        return TODO("Provide the return value")
+//    }
+
     private fun getFilePart(): MultipartBody.Part? {
         val uri = selectedFileUri ?: return null
         val contentResolver = requireContext().contentResolver
-        val inputStream = contentResolver.openInputStream(uri) ?: return null
-        val file = getFileName(uri)?.let { File(it) } // Creating a File object using the file name
-        if (file != null) {
-            file.copyInputStreamToFile(inputStream)
+
+        contentResolver.openInputStream(uri)?.use { inputStream ->
+            val requestBody = RequestBody.create(
+                "application/octet-stream".toMediaTypeOrNull(),
+                inputStream.readBytes() // Read all bytes into a byte array
+            )
+            val part = MultipartBody.Part.createFormData("mriScan", getFileName(uri), requestBody)
+            return part
         }
-        val requestBody = file?.asRequestBody(contentResolver.getType(uri)?.toMediaTypeOrNull())
-        if (file != null) {
-            return requestBody?.let { MultipartBody.Part.createFormData("file", file.name, it) }
-        }
-        return TODO("Provide the return value")
+
+        return null // Return null if opening the stream fails
     }
 
-    private fun getFileName(uri: Uri): String? {
+
+    private fun getFileName(uri: Uri): String {
         val cursor = activity?.contentResolver?.query(uri, null, null, null, null)
         cursor?.moveToFirst()
         val displayName = cursor?.getString(cursor.getColumnIndexOrThrow("_display_name"))
@@ -297,6 +256,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         private const val FILE_PICK_CODE = 101
+        private const val STORAGE_PERMISSION_CODE = 102
     }
 
 

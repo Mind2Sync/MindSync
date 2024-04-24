@@ -157,14 +157,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
                         android:fontFamily="@font/amaranth"
-                        android:text="-------"
                         android:textColor="@color/customPredictionGreen"
                         android:textSize="30sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgPrediction"
-                        tools:text="Yes"
                         tools:ignore="HardcodedText" />
 
                     <TextView
@@ -309,8 +307,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtTips"
-                    tools:ignore="TextSizeCheck"
-                    tools:text="Test" />
+                    tools:ignore="TextSizeCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

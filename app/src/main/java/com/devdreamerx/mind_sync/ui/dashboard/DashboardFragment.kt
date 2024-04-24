@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.devdreamerx.mind_sync.R
 import com.devdreamerx.mind_sync.databinding.FragmentDashboardBinding
 import com.devdreamerx.mind_sync.util.PredictionResponseEvent
 import com.devdreamerx.mind_sync.viewModel.DataViewModel
@@ -40,7 +42,6 @@ class DashboardFragment : Fragment() {
 
         EventBus.getDefault().register(this)
 
-        // Observe name and imageBase64 from the DataViewModel
         dataViewModel.name.observe(viewLifecycleOwner) { name ->
             Log.d("DataViewModel", "Name from DataViewModel: $name")
             binding.nameResults.text = name
