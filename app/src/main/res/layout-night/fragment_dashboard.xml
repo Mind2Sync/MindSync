@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hi👋"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="20sp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="#FF051B0E"
                 tools:ignore="HardcodedText" />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Arun"
                 android:layout_marginStart="5dp"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="20sp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="#FF051B0E"/>
 
@@ -48,65 +48,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Here are your results"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="19sp"
             android:fontFamily="sans-serif-condensed-medium"
             android:textColor="#FF051B0E"/>
-
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:padding="5dp">-->
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="Submitted Retinal Scan:"-->
-        <!--                android:textSize="18sp"-->
-        <!--                android:fontFamily="sans-serif-condensed-medium"-->
-        <!--                android:textColor="#FF051B0E"/>-->
-
-        <!--            <com.google.android.material.imageview.ShapeableImageView-->
-        <!--                android:id="@+id/dashboardOCTimg"-->
-        <!--                android:layout_width="250dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:maxHeight="250dp"-->
-        <!--                android:layout_gravity="center_horizontal"-->
-        <!--                android:layout_marginTop="15dp"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                app:shapeAppearanceOverlay="@style/RoundedCorner"-->
-        <!--                tools:ignore="ImageContrastCheck" />-->
-
-        <!--        </LinearLayout>-->
-
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:padding="5dp">-->
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="Segmented Retinal Image:"-->
-        <!--                android:textSize="18sp"-->
-        <!--                android:fontFamily="sans-serif-condensed-medium"-->
-        <!--                android:textColor="#FF051B0E"/>-->
-
-        <!--            <com.google.android.material.imageview.ShapeableImageView-->
-        <!--                android:id="@+id/dashboardSegmentedImg"-->
-        <!--                android:layout_width="250dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:maxHeight="250dp"-->
-        <!--                android:layout_gravity="center_horizontal"-->
-        <!--                android:layout_marginTop="15dp"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                app:shapeAppearanceOverlay="@style/RoundedCorner"-->
-        <!--                tools:ignore="ImageContrastCheck" />-->
-
-        <!--        </LinearLayout>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -122,16 +66,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="20dp"
             android:layout_marginTop="20dp">
 
             <!--Card View 1-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="0dp"
-                android:layout_height="130dp"
+                android:layout_height="220dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="40dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp"
+                android:layout_marginStart="13dp"
+                app:cardUseCompatPadding="false"
+                android:layout_marginBottom="30dp"
                 app:cardBackgroundColor="#C9CAC9"
                 android:layout_marginEnd="10dp">
 
@@ -141,7 +89,7 @@
                     android:padding="8dp">
 
                     <ImageView
-                        android:id="@+id/imgPrediction"
+                        android:id="@+id/imgPrediction1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="8dp"
@@ -159,10 +107,11 @@
                         android:fontFamily="@font/amaranth"
                         android:textColor="@color/customPredictionGreen"
                         android:textSize="30sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPrediction"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imgPrediction"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPrediction1"
                         tools:ignore="HardcodedText" />
 
                     <TextView
@@ -178,7 +127,71 @@
                         android:layout_marginTop="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/predictionYN"
+                        tools:ignore="HardcodedText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Card View 1-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="0dp"
+                android:layout_height="220dp"
+                android:layout_weight="1"
+                android:layout_marginStart="13dp"
+                app:cardUseCompatPadding="false"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="30dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="#C9CAC9"
+                app:cardElevation="10dp"
+                android:layout_marginEnd="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/imgPrediction2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/prediction"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/typeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/amaranth"
+                        android:textColor="@color/customPredictionGreen"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtADHDType"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgPrediction2"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/txtADHDType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:text="Category"
+                        android:textColor="#3E3E3E"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="HardcodedText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

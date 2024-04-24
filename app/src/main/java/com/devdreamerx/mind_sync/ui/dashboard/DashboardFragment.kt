@@ -56,28 +56,39 @@ class DashboardFragment : Fragment() {
 
     }
 
+//    @SuppressLint("SetTextI18n")
+//    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+
+//    fun onPredictionResponseEvent(event: PredictionResponseEvent) {
+//        val predictionResponse = event.predictionResponse
+//        // Update UI elements with prediction response data
+////        binding.predictionYN.text = predictionResponse.prediction.toString()
+////        if (predictionResponse.prediction) {
+////            binding.predictionYN.text = "YES"
+////            binding.predictionYN.setTextColor(ContextCompat.getColor(requireContext(), R.color.customPredictionRed)) // Assuming you have defined the red color in your resources
+////        } else {
+////            binding.predictionYN.text = "NO"
+////            binding.predictionYN.setTextColor(ContextCompat.getColor(requireContext(), R.color.customPredictionGreen)) // Assuming you have defined the green color in your resources
+////        }
+////        binding.percentage.text = predictionResponse.chances.toString()
+////        val percentageString = String.format("%.0f%%", predictionResponse.chances * 100)
+////        binding.percentage.text = percentageString
+////        binding.txtRecommendations.text = predictionResponse.recommendation
+//
+////        val segmentedImageUrl = predictionResponse.segmentedImage
+////        if (!segmentedImageUrl.isNullOrEmpty()) {
+////            loadImageFromUrl(segmentedImageUrl)
+////        }
+//    }
+
     @SuppressLint("SetTextI18n")
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    fun onPredictionResponseEvent(event: PredictionResponseEvent) {
-        val predictionResponse = event.predictionResponse
-        // Update UI elements with prediction response data
-//        binding.predictionYN.text = predictionResponse.prediction.toString()
-//        if (predictionResponse.prediction) {
-//            binding.predictionYN.text = "YES"
-//            binding.predictionYN.setTextColor(ContextCompat.getColor(requireContext(), R.color.customPredictionRed)) // Assuming you have defined the red color in your resources
-//        } else {
-//            binding.predictionYN.text = "NO"
-//            binding.predictionYN.setTextColor(ContextCompat.getColor(requireContext(), R.color.customPredictionGreen)) // Assuming you have defined the green color in your resources
-//        }
-//        binding.percentage.text = predictionResponse.chances.toString()
-//        val percentageString = String.format("%.0f%%", predictionResponse.chances * 100)
-//        binding.percentage.text = percentageString
-//        binding.txtRecommendations.text = predictionResponse.recommendation
+    fun onPredictionResponseEvent(event: PredictionResponseEvent){
+        val prediction = event.prediction
 
-//        val segmentedImageUrl = predictionResponse.segmentedImage
-//        if (!segmentedImageUrl.isNullOrEmpty()) {
-//            loadImageFromUrl(segmentedImageUrl)
-//        }
+        binding.predictionYN.text = prediction.prediction.toString()
+        binding.typeText.text = prediction.adhdType.toString()
+
     }
 
     private fun convertBase64ToBitmap(base64String: String): Bitmap? {
@@ -86,14 +97,6 @@ class DashboardFragment : Fragment() {
         val inputStream: InputStream = ByteArrayInputStream(decodedBytes)
         return BitmapFactory.decodeStream(inputStream)
     }
-
-
-//    private fun loadImageFromUrl(imageUrl: String) {
-//        Glide.with(this)
-//            .load(imageUrl)
-//            .into(binding.dashboardSegmentedImg)
-//    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

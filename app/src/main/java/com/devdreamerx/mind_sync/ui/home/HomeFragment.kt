@@ -28,16 +28,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import org.greenrobot.eventbus.EventBus
 import retrofit2.await
 import java.io.File
 import java.io.InputStream
-import java.util.UUID
 
 @Suppress("DEPRECATION", "UNREACHABLE_CODE")
 class HomeFragment : Fragment() {
@@ -90,11 +87,12 @@ class HomeFragment : Fragment() {
 
                             Log.d("APIResponse", "Response received: $response")
 
-                            val predictionResponse = PredictionResponse(
-                                prediction = response.prediction
+                            val prediction = PredictionResponse(
+                                prediction = response.prediction,
+                                adhdType = response.adhdType
                             )
 
-                            EventBus.getDefault().postSticky(PredictionResponseEvent(predictionResponse))
+                            EventBus.getDefault().postSticky(PredictionResponseEvent(prediction))
 
                             dataViewModel.setNameAndFileName(name, selectedFileUri)
 
@@ -238,8 +236,7 @@ class HomeFragment : Fragment() {
                 "application/octet-stream".toMediaTypeOrNull(),
                 inputStream.readBytes() // Read all bytes into a byte array
             )
-            val part = MultipartBody.Part.createFormData("mriScan", getFileName(uri), requestBody)
-            return part
+            return MultipartBody.Part.createFormData("mriScan", getFileName(uri), requestBody)
         }
 
         return null // Return null if opening the stream fails

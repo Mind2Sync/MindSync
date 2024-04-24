@@ -12,7 +12,6 @@ object RetrofitInstance {
     val predictionApi: PredictionApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(OkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PredictionApiService::class.java)

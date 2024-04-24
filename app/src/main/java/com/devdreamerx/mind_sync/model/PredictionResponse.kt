@@ -1,7 +1,8 @@
 package com.devdreamerx.mind_sync.model
 
 data class PredictionResponse(
-    val prediction: Float
+    val prediction: Float,
+    val adhdType: String?
 )
 
 
